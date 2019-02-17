@@ -7,8 +7,6 @@
 #include <boost/date_time/posix_time/posix_time_types.hpp>
 #include <boost/date_time.hpp>
 
-#include <cassert>
-
 // please also clone my cppbench library ( https://github.com/sinisa-susnjar/cppbench.git )
 #include "../cppbench/cppbench.h"
 
@@ -78,10 +76,6 @@ void run_tests()
 
 	cout << "emplace()" << endl;
 	cppbench::print( cppbench::compare(rt) );
-
-	assert(vec.size() == SZ);
-	assert(tv.size() == SZ);
-	assert(map.size() == SZ);
 
 	// operator[] performance
 	rt = cppbench::time(N, {
