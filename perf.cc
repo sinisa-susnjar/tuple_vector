@@ -9,6 +9,7 @@
 
 #include <cassert>
 
+// please also clone my cppbench library ( https://github.com/sinisa-susnjar/cppbench.git )
 #include "../cppbench/cppbench.h"
 
 #include "tuple_vector.h"
@@ -17,7 +18,7 @@ using namespace boost::posix_time;
 using namespace boost::gregorian;
 using namespace std;
 
-/// dummy helper class to make ptime behave more like a builtin type
+/// dummy helper class to make boost::posix_time::ptime work with run_test()
 class my_ptime : public ptime {
 public:
 	my_ptime(int n = 0) : ptime(boost::gregorian::date(1970, Jan, 1)) { }
@@ -49,7 +50,7 @@ void run_tests()
 	// create dummy timeseries with strictly increasing time values
 	for (size_t n = 0; n < SZ; n++, dt++) {
 		ts.emplace_back(make_pair(dt, 3.1415926));
-		if (n%20 == 0) dt++;
+		// if (n%23 == 0) dt++; // uncomment to add some "sparsity" - this should decrease the access performance (a little)
 	}
 
 	tuple_vector<K, double> tv;
@@ -70,7 +71,6 @@ void run_tests()
 		}},
 		{ "tuple",	[ts,&tv]() {
 			tv.reserve(ts.size());
-			// copy(ts.begin(), ts.end()-1, tv.begin()); 
 			for (const auto &it : ts)
 				tv.emplace_back(it);
 		}}
@@ -97,9 +97,9 @@ void run_tests()
 					abort();
 		}},
 		{ "tuple",	[ts,tv]() {
-			unsigned i = 0;
+			size_t i = 0;
 			for (const auto &it : ts)
-				if (tv[i++] != it.second)
+				if (tv[i++].second != it.second)
 					abort();
 		}}
 	});
@@ -149,7 +149,6 @@ void run_tests()
 			}
 		}},
 		{ "tuple",	[ts,&tv]() {
-			// tv.reset();
 			for (auto &i : ts) {
 				auto it = tv.find(i.first);
 				if (it == tv.end())
@@ -181,7 +180,6 @@ void run_tests()
 			}
 		}},
 		{ "tuple",	[ts,&tv]() {
-			// tv.reset();
 			K dt;
 			K l = ts.crbegin()->first;
 			for (auto &i : ts) {
@@ -207,6 +205,6 @@ main()
 {
 	cout << "RUNNING TESTS FOR time_t" << endl;
 	run_tests<time_t>();
-	cout << endl << "RUNNING TESTS FOR ptime" << endl;
+	cout << endl << "RUNNING TESTS FOR boost::posix_time::ptime" << endl;
 	run_tests<my_ptime>();
 }
