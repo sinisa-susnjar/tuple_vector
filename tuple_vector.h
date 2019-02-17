@@ -137,10 +137,10 @@ public:
 	 * \return Const reference to the appropriate timeseries value.
 	 */
 	// const V &operator[](unsigned idx) const { assert(idx < m_vec->size()); return m_vec[idx].second; }
-	/*
 	inline const V &operator[](unsigned idx) const {
 		return vector<value_type>::operator [](idx).second;
 	}
+	/*
 	*/
 
 	/**
@@ -149,10 +149,10 @@ public:
 	 * \return Mutable reference to the appropriate timeseries value.
 	 */
 	// V &operator[](unsigned idx)	{ assert(idx < m_vec->size()); return m_vec[idx].second; }
-	/*
 	inline V &operator[](unsigned idx)	{
 		return vector<value_type>::operator [](idx).second;
 	}
+	/*
 	*/
 
 	/**
@@ -214,14 +214,14 @@ public:
 	 * \param key The key whose value should be found.
 	 * \return Const reference to the appropriate timeseries value.
 	 */
-	inline const V &operator[](const K &key) const { return at(key)->second; }
+	inline const V &operator[](const K &key) const { return lower_bound(key)->second; }
 
 	/**
 	 * \brief Mutable array access operator.
 	 * \param key The key whose value should be found.
 	 * \return Mutable reference to the appropriate timeseries value.
 	 */
-	inline V &operator[](const K &key)	{ return at(key)->second; }
+	inline V &operator[](const K &key)	{ return lower_bound(key)->second; }
 
 	/**
 	 * \brief Get all values from this timeseries.
@@ -509,11 +509,9 @@ protected:
 				cout << "! rc->first > key" << endl;
 			}
 			*/
-			/*
 			for (; rc->first > key && rc > m_front; --rc) {
 				// if (debug) rc->first.dump(cout);
 			}
-			*/
 			/*
 			if (rc == m_front && rc->first < key)
 				return vector<value_type>::_M_impl._M_finish;
@@ -528,11 +526,9 @@ protected:
 				cout << "! rc->first < key" << endl;
 			}
 			*/
-			/*
 			for (; rc->first < key && rc < m_back; ++rc) {
 				// if (debug) rc->first.dump(cout);
 			}
-			*/
 			/*
 			if (rc == m_back && rc->first < key)
 				return vector<value_type>::_M_impl._M_finish;
