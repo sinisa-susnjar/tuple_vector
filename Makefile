@@ -1,5 +1,5 @@
 CXXFLAGS=-O3 -std=c++14 -DNDEBUG
 CXX=clang++
-all: perf
+all: perf sample
 clean:
-	rm -f perf
+	rm -f perf sample
