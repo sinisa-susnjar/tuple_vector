@@ -189,10 +189,10 @@ public:
 	 * \param idx Index into the timeseries data.
 	 * \return Const reference to the appropriate timeseries value.
 	 */
-	/*
-	inline const V &operator[](unsigned idx) const {
-		return vector<value_type>::operator [](idx).second;
+	inline const value_type &operator[](size_t idx) const {
+		return vector<value_type>::operator [](idx);
 	}
+	/*
 	*/
 
 	/**
@@ -200,10 +200,10 @@ public:
 	 * \param idx Index into the timeseries data.
 	 * \return Mutable reference to the appropriate timeseries value.
 	 */
-	/*
-	inline V &operator[](unsigned idx)	{
-		return vector<value_type>::operator [](idx).second;
+	inline value_type &operator[](size_t idx)	{
+		return vector<value_type>::operator [](idx);
 	}
+	/*
 	*/
 
 	/**
@@ -211,14 +211,14 @@ public:
 	 * \param key The key whose value should be found.
 	 * \return Const reference to the appropriate timeseries value.
 	 */
-	inline const V &operator[](const K &key) const { return lower_bound(key)->second; }
+	inline const value_type &operator[](const K &key) const { return lower_bound(key); }
 
 	/**
 	 * \brief Mutable array access operator.
 	 * \param key The key whose value should be found.
 	 * \return Mutable reference to the appropriate timeseries value.
 	 */
-	inline V &operator[](const K &key)	{ return lower_bound(key)->second; }
+	inline value_type &operator[](const K &key)	{ return lower_bound(key); }
 
 	/*
 	friend std::ostream &operator<< (std::ostream &os, const tuple_vector<K, V> &t) {
