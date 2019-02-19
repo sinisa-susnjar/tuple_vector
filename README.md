@@ -3,7 +3,7 @@
 A specialised container class based on std::vector containing std::pair<K,V> tuples for
 *fast* find(K) and lower_bound(K) operations on timeseries data with strictly increasing
 keys. It can be used like a normal std::vector (since it is one), with the addition of
-some std::map methods: find(key), lower_bound(key), at(key), operator[](key).
+some std::map methods: ``find(key)``, ``lower_bound(key)``, ``at(key)``, ``operator[](key)``.
 
 # Use-cases
 
