@@ -69,25 +69,21 @@ void run_tests(ofstream &&ofs, int n_tests, int start_sz, int end_sz, int sz_ste
 			#include "tests/emplace_test.h"
 			Rdata(ofs, rt, "emplace", sz);
 		}
-
 		{	// operator[] performance
 			cout << "array with size " << sz << endl;
 			#include "tests/array_test.h"
 			Rdata(ofs, rt, "array", sz);
 		}
-
 		{	// iterator performance
 			cout << "iterator with size " << sz << endl;
 			#include "tests/iterator_test.h"
 			Rdata(ofs, rt, "iterator", sz);
 		}
-
 		{	// find() performance
 			cout << "find with size " << sz << endl;
 			#include "tests/find_test.h"
 			Rdata(ofs, rt, "find", sz);
 		}
-
 		{	// lower_bound() performance
 			cout << "lower_bound with size " << sz << endl;
 			#include "tests/lower_bound_test.h"
