@@ -24,18 +24,18 @@ See the provided sample.cc or perf.cc files for usage examples.
 
 # Performance plots
 
-## emplace...() performance comparison between a std::vector, std::map and a tuple_vector
+## emplace performance comparison between vector, map and tuple_vector
 ![alt text](results/time_t/emplace.png "emplace()")
 
-## operator[] performance comparison between a std::vector, std::map and a tuple_vector
+## operator[] performance comparison between vector, map and tuple_vector
 ![alt text](results/time_t/array.png "operator[] access")
 
-## iterator performance comparison between a std::vector, std::map and a tuple_vector
+## iterator performance comparison between vector, map and tuple_vector
 ![alt text](results/time_t/iterator.png "iterator access")
 
-## find(key) performance comparison between a std::vector, std::map and a tuple_vector
+## find performance comparison between map and tuple_vector
 ![alt text](results/time_t/find.png "find(key)")
 
-## lower_bound(key) performance comparison between a std::vector, std::map and a tuple_vector
+## lower_bound performance comparison between map and tuple_vector
 ![alt text](results/time_t/lower_bound.png "lower_bound(key)")
 
