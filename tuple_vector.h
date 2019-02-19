@@ -70,12 +70,12 @@ public:
 		m_recompute_range = true;
 	}
 	inline void emplace_back(const value_type &&p) {
-		std::vector<value_type>::emplace_back(p);
+		std::vector<value_type>::emplace_back(std::forward<const value_type>(p));
 		m_recompute_range = true;
 	}
-	inline iterator emplace(const_iterator pos, value_type &v) {
+	template <typename... Args> iterator emplace (const_iterator pos, Args&&... args) {
 		m_recompute_range = true;
-		return std::vector<value_type>::emplace(pos, v);
+		return std::vector<value_type>::emplace(pos, std::forward<Args>(args)...);
 	}
 	inline void emplace_back(const value_type &p) {
 		std::vector<value_type>::emplace_back(p);
@@ -109,7 +109,7 @@ public:
 	}
 	inline iterator insert(const_iterator position, value_type&& val) {
 		m_recompute_range = true;
-		return std::vector<value_type>::insert(position, val);
+		return std::vector<value_type>::insert(position, std::forward<value_type>(val));
 	}
 	inline iterator insert(const_iterator position, std::initializer_list<value_type> il) {
 		m_recompute_range = true;
@@ -121,7 +121,7 @@ public:
 	}
 	inline tuple_vector<K, V>& operator=(std::vector<value_type>&& x) {
 		m_recompute_range = true;
-		return std::vector<value_type>::operator=(x);
+		return std::vector<value_type>::operator=(std::forward<std::vector<value_type>>(x));
 	}
 	inline tuple_vector<K, V>& operator=(std::initializer_list<value_type> il) {
 		m_recompute_range = true;
@@ -137,7 +137,7 @@ public:
 	}
 	inline void push_back(value_type&& val) {
 		m_recompute_range = true;
-		std::vector<value_type>::push_back(val);
+		std::vector<value_type>::push_back(std::forward<value_type>(val));
 	}
 	inline void resize(size_type n) {
 		m_recompute_range = true;
