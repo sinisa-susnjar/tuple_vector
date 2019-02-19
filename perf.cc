@@ -13,10 +13,10 @@
 using namespace std;
 
 /**
- * \brief Specialised output function to generate data that will later plotted by R.
+ * \brief Specialised output function to generate data that will later be plotted by R.
  * \param os Where to write the test results.
- * \param result A multimap with the runtimes of all tests obtained by a call to time().
- * \param name Test group name.
+ * \param result A multimap with the runtimes of all tests obtained by a call to cppbench::time().
+ * \param name Test group name, e.g. "emplace".
  * \param sz Container size.
  * \param delim What delimiter character to use, default is tab.
  * \param prec Numerical precision for floating value, default is 5.
