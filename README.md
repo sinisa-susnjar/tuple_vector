@@ -20,7 +20,8 @@ timeseries data by implementing an interpolation search with ~O(log log n) compl
 
 # Sample
 
-See the provided sample.cc or perf.cc files for usage examples.
+See the provided sample.cc or perf.cc files for usage examples. To compile the provided
+sample programs, you will also need to clone my ``cppbench`` repository.
 
 # Performance plots
 
