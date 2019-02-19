@@ -10,7 +10,7 @@ library(gridExtra)
 library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 
-# get data file to generate plots from
+# get name of file containing test results
 args = commandArgs(trailingOnly=TRUE)
 if (length(args) == 0)
 	stop("usage: mkplots.r <input-file>.n", call.=FALSE)
@@ -28,7 +28,7 @@ if (length(args) == 0)
 # iterator  1000    map           5908   5.72200   16.55800   5.90823    0.99323   0.99661
 #   ...
 
-# read data file into table
+# read test results into table
 data <- read.table(args[1], header=TRUE, sep="\t")
 # create runtime, min, max, avg, var, dev plots for each test and nicely arrange them into a 3x2 grid
 for (t in unique(data$test)) {
