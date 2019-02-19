@@ -69,11 +69,11 @@ public:
 		std::vector<value_type>::clear();
 		m_recompute_range = true;
 	}
-	inline void emplace_back(const value_type &&p) {
-		std::vector<value_type>::emplace_back(std::forward<const value_type>(p));
+	template <typename... Args> inline void emplace_back(Args&&... args) {
+		std::vector<value_type>::emplace_back(std::forward<Args>(args)...);
 		m_recompute_range = true;
 	}
-	template <typename... Args> iterator emplace (const_iterator pos, Args&&... args) {
+	template <typename... Args> inline iterator emplace (const_iterator pos, Args&&... args) {
 		m_recompute_range = true;
 		return std::vector<value_type>::emplace(pos, std::forward<Args>(args)...);
 	}
