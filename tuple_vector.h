@@ -32,11 +32,12 @@ struct key {
  *		The find() and lower_bound() methods piggyback on the properties of strictly increasing
  *		timeseries by implementing an interpolation search with ~O(log log n) complexity.
  *		The container does not sort, so any data needs to be presorted. This is generally the
- *		case if your use-case involves reading timeseries data from a database or revceiving
+ *		case if your use-case involves reading timeseries data from a database or receiving
  *		it via some data provider api.
  *		All modifying operations need to set m_recompute_range to true so that find() and
  *		lower_bound() can update internal book-keeping variables.
  * \tparam K A datetime type, e.g. time_t, boost::posix_time::ptime or similar.
+ * \tparam V A value type, can be whatever is appropriate for the use-case.
  */
 template<typename K, typename V>
 class tuple_vector : public std::vector<std::pair<K,V>> {
@@ -261,7 +262,7 @@ protected:
 			return rc;
 
 		return std::vector<value_type>::_M_impl._M_finish;
-	}	// _find()
+	}
 
 	inline const value_type *_lower_bound(const K &key) const
 	{
@@ -313,7 +314,7 @@ protected:
 		if (rc->first >= key)
 			return rc;
 		return std::vector<value_type>::_M_impl._M_finish;
-	}	// _lower_bound()
+	}
 
 private:
 	mutable size_t m_size = 0;
