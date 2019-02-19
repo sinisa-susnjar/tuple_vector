@@ -22,3 +22,6 @@ timeseries data by implementing an interpolation search with ~O(log log n) compl
 
 See the provided sample.cc or perf.cc files for usage examples.
 
+# Performance plots
+
+![alt text](results/time_t/array.png "operator[] access")
