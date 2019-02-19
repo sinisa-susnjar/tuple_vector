@@ -41,25 +41,21 @@ void run_tests()
 		cout << "emplace()" << endl;
 		cppbench::print( cppbench::compare(rt) );
 	}
-
 	{	// operator[] performance
 		#include "tests/array_test.h"
 		cout << endl << "operator []" << endl;
 		cppbench::print( cppbench::compare(rt) );
 	}
-
 	{	// iterator performance
 		#include "tests/iterator_test.h"
 		cout << endl << "iterator" << endl;
 		cppbench::print( cppbench::compare(rt) );
 	}
-
 	{	// find() performance
 		#include "tests/find_test.h"
 		cout << endl << "find()" << endl;
 		cppbench::print( cppbench::compare(rt) );
 	}
-
 	{	// lower_bound() performance
 		#include "tests/lower_bound_test.h"
 		cout << endl << "lower_bound()" << endl;
