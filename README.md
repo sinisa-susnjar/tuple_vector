@@ -15,8 +15,8 @@ than std::map, but this also depends somewhat on the type of key being used - ym
 
 # Operation
 
-The find() and lower_bound() methods piggyback on the properties of strictly increasing
-timeseries data by implementing an interpolation search with ~O(log log n) complexity.
+The key lookup methods piggyback on the properties of strictly increasing timeseries
+data by implementing an interpolation search with ~O(log log n) complexity.
 
 # Sample
 
