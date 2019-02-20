@@ -13,8 +13,6 @@
 #include <iomanip>
 #include <memory>
 
-#include <assert.h>
-
 /**
  * \brief key functor used to do numerical calculations with the given type K
  * 		since not all date/time types are readily convertible into numeric types
