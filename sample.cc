@@ -28,7 +28,7 @@ void run_tests()
 
 	// create dummy timeseries with strictly increasing time values
 	for (size_t n = 0; n < SZ; n++, dt++) {
-		ts.emplace_back(make_pair(dt, 3.1415926));
+		ts.emplace_back(dt, 3.1415926);
 		// if (n%23 == 0) dt++; // uncomment to add some "sparsity" - this should decrease the access performance (a little)
 	}
 
