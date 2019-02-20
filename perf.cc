@@ -45,18 +45,18 @@ void Rdata(ostream &os, const cppbench::runtime_result &result, const string &na
  * \tparam K a datetime type supporting initialisation from int and post-increment
  */
 template<typename K>
-void run_tests(ofstream &&ofs, int n_tests, int start_sz, int end_sz, int sz_step)
+void run_tests(ofstream &&ofs, size_t n_tests, size_t start_sz, size_t end_sz, size_t sz_step)
 {
 	ofs << "test" << '\t' << "size" << '\t' << "container" << '\t'
 		<< "runtime" << '\t' << "min" << '\t' << "max" << '\t'
 		<< "avg" << '\t' << "var" << '\t' << "dev" << endl;
-	for (int sz = start_sz; sz <= end_sz; sz += sz_step) {
+	for (size_t sz = start_sz; sz <= end_sz; sz += sz_step) {
 		vector<pair<K, double>> ts;
 		K dt = 0;
 
 		// create dummy timeseries with strictly increasing time values
 		for (size_t n = 0; n < sz; n++, dt++) {
-			ts.emplace_back(make_pair(dt, 3.1415926));
+			ts.emplace_back(dt, 3.1415926);
 			// if (n%23 == 0) dt++; // uncomment to add some "sparsity" - this should decrease the access performance (a little)
 		}
 
