@@ -94,11 +94,11 @@ void run_tests(ofstream &&ofs, size_t n_tests, size_t start_sz, size_t end_sz, s
 
 int main()
 {
-	// run 1000x tests, using container sizes from 1000 to 20000 with step size 1000
+	// run 100x tests, using container sizes from 10000 to 1000000 with step size 10000
 
 	cout << "RUNNING TESTS FOR time_t" << endl;
-	run_tests<time_t>(ofstream("timet.txt"), 1000, 1000, 20000, 1000);
+	run_tests<time_t>(ofstream("timet.txt"), 100, 10000, 1000000, 10000);
 
 	cout << endl << "RUNNING TESTS FOR boost::posix_time::ptime" << endl;
-	run_tests<my_ptime>(ofstream("ptime.txt"), 1000, 1000, 20000, 1000);
+	run_tests<my_ptime>(ofstream("ptime.txt"), 100, 10000, 1000000, 10000);
 }
