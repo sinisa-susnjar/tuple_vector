@@ -5,6 +5,15 @@ A specialised container class based on std::vector containing std::pair<K,V> tup
 keys. It can be used like a normal std::vector (since it is one), with the addition of
 some std::map methods: ``find(key)``, ``lower_bound(key)``, ``at(key)``, ``operator[](key)``.
 
+# Pitfalls
+
+Please be aware that since this class is derived from std::vector, objects of type tuple_vector can
+be passed to any method expecting a std::vector - if this method then calls modifying operations on
+the passed object, it will call the std::vector methods instead of the tuple_vector ones, leaving
+the internal house keeping ot tuple_vector in shambles.
+At some point in the future (when I have more time) I might change the implementation to become a
+"has-a" std::vector instead of an "is-a" std::vector.
+
 # Use-cases
 
 The typical use-case is to read strictly increasing timeseries data once, e.g. from a
@@ -12,6 +21,12 @@ database or data provider api, and then only append to it.
 The performance for appending, array operations and iterations is in the same ballpark as
 std::vector, while the find() and lower_bound() performance is typically 10x and 5x faster
 than std::map, but this also depends somewhat on the type of key being used - ymmv.
+
+The key part (K) can be anything that can be represented as some form of timestamp. To allow
+any form of keys, the user has to define an appropriate key functor that returns a numerical
+representation of the point in time being used, simple example for time_t:
+
+    template<> double key<time_t>::operator()(const time_t &x) const { return x; }
 
 # Operation
 
